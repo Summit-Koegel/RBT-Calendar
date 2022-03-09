@@ -10,7 +10,7 @@ public interface IHoliday extends Comparable<IHoliday> {
 	int getMonth(); // returns the month of the holiday
 	int getDay(); // returns the day of the holiday
 	String getDayOfWeek(); // returns the day of the week that the holiday falls on
-	boolean compareTo(IHoliday other); // compares two holidays by year, then month, then day
+	int compareTo(IHoliday other); // compares two holidays by year, then month, then day
 	@Override
 	String toString(); // returns a date in the format "NAME: YYYY-MM-DD (DOW)"
 	
