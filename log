@@ -1,0 +1,63 @@
+Script started on 2022-03-29 02:30:01+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="93" LINES="51"]
+]0;cjjohnsen@cs400: ~/Project2_DQ_redcjjohnsen@cs400:~/Project2_DQ_red$ git status
+On branch DataWrangler
+Your branch is ahead of 'origin/DataWrangler' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+]0;cjjohnsen@cs400: ~/Project2_DQ_redcjjohnsen@cs400:~/Project2_DQ_red$ git log -1
+[?1h=[33mcommit 489cfd2a27171be2027be952b1d2d6fb1e6e8988[m[33m ([m[1;36mHEAD -> [m[1;32mDataWrangler[m[33m)[m[m
+Author: Corey Johnsen <cjjohnsen@wisc.edu>[m
+Date:   Tue Mar 29 02:29:23 2022 +0000[m
+[m
+    added DataWranglerTests, Holiday, HolidayLoader, Holidays.xml, and junit5.jar[m
+[K[?1l>]0;cjjohnsen@cs400: ~/Project2_DQ_redcjjohnsen@cs400:~/Project2_DQ_red$ make clean
+rm *.class
+rm: cannot remove '*.class': No such file or directory
+make: *** [Makefile:20: clean] Error 1
+]0;cjjohnsen@cs400: ~/Project2_DQ_redcjjohnsen@cs400:~/Project2_DQ_red$ ls
+DataWranglerTests.java  Holidays.xml          IHolidayCalendarBackend.java  Makefile
+Holiday.java            IComparableList.java  IHolidayLoader.java           [0m[01;31mjunit5.jar[0m
+HolidayLoader.java      IHoliday.java         IRedBlackCalendar.java        log
+]0;cjjohnsen@cs400: ~/Project2_DQ_redcjjohnsen@cs400:~/Project2_DQ_red$ make runTests
+javac IHoliday.java
+javac Holiday.java
+javac IHolidayLoader.java
+javac HolidayLoader.java
+javac -cp .:junit5.jar DataWranglerTests.java -Xlint
+java -jar junit5.jar --class-path . --scan-classpath
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mDataWranglerTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtestHolidayString()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestHolidayConstructor()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestHolidayGetters()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestLoader()[0m [32m✔[0m
+[36m│     └─[0m [34mtestHolidayCompareTo()[0m [32m✔[0m
+[36m└─[0m [36mJUnit Vintage[0m [32m✔[0m
+
+Test run finished after 239 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         5 tests successful      ]
+[         0 tests failed          ]
+
+]0;cjjohnsen@cs400: ~/Project2_DQ_redcjjohnsen@cs400:~/Project2_DQ_red$ exit
+exit
+
+Script done on 2022-03-29 02:30:47+00:00 [COMMAND_EXIT_CODE="0"]
