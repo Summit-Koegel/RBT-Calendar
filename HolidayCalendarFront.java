@@ -1,4 +1,4 @@
-// --== CS400 Project [NUMBER] File Header ==--
+// --== CS400 Project 02 File Header ==--
 // Name: Aaryush Gupta
 // CSL Username: aaryush
 // Email: agupta276@wisc.edu
