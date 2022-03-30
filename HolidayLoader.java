@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.io.File;
+
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
 
 /**
  * Class to load holidays from a given XML file. The XML file
@@ -27,71 +29,33 @@ public class HolidayLoader implements IHolidayLoader {
         // create list to store holidays
         ArrayList<IHoliday> holidays = new ArrayList<IHoliday>();
 
-        // create scanner to traverse xml file
-        Scanner sc = new Scanner(xmlFile);
+        // instantiate factory
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
-        // skip first and second line
-        sc.nextLine();
-        sc.nextLine();
-
-        // initialize useful variables
-        int lineCounter = 0; // counter to keep track of what line is being read
-        // variables to store parameters for the current holiday object being read
-        String name = null;
-        String dayOfWeek = null;
-        int year = 0;
-        int month = 0;
-        int day = 0;
-
-        // traverse xml file
-        while(sc.hasNext()) { // loop until end of xml file is reached
-            // arrays of strings used to store split lines
-            String[] data;
-            String[] splitData;
-            switch(lineCounter % 7) {
-                case 0:
-                    // line is <Holiday>, skip
-                    sc.nextLine();
-                    break;
-                case 1:
-                    // line is <Name>, store name of holiday
-                    data = sc.nextLine().split(">");
-                    splitData = data[1].split("<");
-                    name = splitData[0];
-                    break;
-                case 2:
-                    // line is <Year>, store year of holiday
-                    data = sc.nextLine().split(">");
-                    splitData = data[1].split("<");
-                    year = Integer.parseInt(splitData[0]);
-                    break;
-                case 3:
-                    // line is <Month>, store month of holiday
-                    data = sc.nextLine().split(">");
-                    splitData = data[1].split("<");
-                    month = Integer.parseInt(splitData[0]);
-                    break;
-                case 4:
-                    // line is <Day>, store day of holiday
-                    data = sc.nextLine().split(">");
-                    splitData = data[1].split("<");
-                    day = Integer.parseInt(splitData[0]);
-                    break;
-                case 5:
-                    // line is <WeekDay>, store the day of the week of the holiday
-                    data = sc.nextLine().split(">");
-                    splitData = data[1].split("<");
-                    dayOfWeek = splitData[0];
-                    break;
-                case 6:
-                    // line is </Holiday>, create new Holiday with collected data
-                    holidays.add(new Holiday(name, dayOfWeek, year, month, day));
-                    sc.nextLine();
-                    break;
+        try {
+            // parse file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(xmlFile);
+            // store all holidays in the XML file
+            NodeList list = doc.getElementsByTagName("holiday");
+            // create new Holiday for each holiday in the list
+            for(int i = 0; i < list.getLength(); i++) {
+                // store this holiday as a node, then convert it to an element
+                Node node = list.item(i);
+                Element element = (Element) node;
+                // add a new Holiday to the list
+                holidays.add(new Holiday(
+                        element.getElementsByTagName("Name").item(0).getTextContent(),
+                        element.getElementsByTagName("WeekDay").item(0).getTextContent(),
+                        Integer.parseInt(element.getElementsByTagName("Year").item(0).getTextContent()),
+                        Integer.parseInt(element.getElementsByTagName("Month").item(0).getTextContent()),
+                        Integer.parseInt(element.getElementsByTagName("Date").item(0).getTextContent())
+                ));
             }
-            lineCounter++;
+            return holidays;
+        } catch (Exception e) {
+            return holidays; // return empty list (or whatever is already inserted)
         }
-        return holidays;
     }
 
 }
