@@ -22,6 +22,7 @@ ComparableList.class: ComparableList.java
 SortedCollectionInterface.class: SortedCollectionInterface.java
 	javac SortedCollectionInterface.java
 
-
+clean:
+	rm *.class
 
 
