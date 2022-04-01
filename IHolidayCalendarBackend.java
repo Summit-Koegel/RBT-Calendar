@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * An instance of a classs that implements the following interface can
  * be used to search and retrieve the database of holidays within the 
