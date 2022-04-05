@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<calender>
+	<holiday>
+		<Name>New Year's Day</Name>
+		<Year>2022</Year>
+		<Month>1</Month>
+		<Date>1</Date>
+		<WeekDay>Saturday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Martin Luther King Jr. Day</Name>
+		<Year>2022</Year>
+		<Month>1</Month>
+		<Date>17</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>First Day of Black History Month</Name>
+		<Year>2022</Year>
+		<Month>2</Month>
+		<Date>1</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Valentine's Day</Name>
+		<Year>2022</Year>
+		<Month>2</Month>
+		<Date>14</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Presidents' Day</Name>
+		<Year>2022</Year>
+		<Month>2</Month>
+		<Date>21</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>First Day of Women's History Month</Name>
+		<Year>2022</Year>
+		<Month>3</Month>
+		<Date>1</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Daylight Savings Starts</Name>
+		<Year>2022</Year>
+		<Month>3</Month>
+		<Date>13</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>St. Patrick's Day</Name>
+		<Year>2022</Year>
+		<Month>3</Month>
+		<Date>17</Date>
+		<WeekDay>Thursday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Easter Sunday</Name>
+		<Year>2022</Year>
+		<Month>4</Month>
+		<Date>17</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Tax Day</Name>
+		<Year>2022</Year>
+		<Month>4</Month>
+		<Date>18</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>First Day of Asian Pacific American Heritage Month</Name>
+		<Year>2022</Year>
+		<Month>5</Month>
+		<Date>1</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Cinco de Mayo</Name>
+		<Year>2022</Year>
+		<Month>5</Month>
+		<Date>5</Date>
+		<WeekDay>Thursday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Mother's Day</Name>
+		<Year>2022</Year>
+		<Month>5</Month>
+		<Date>8</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Memorial Day</Name>
+		<Year>2022</Year>
+		<Month>5</Month>
+		<Date>30</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>First Day of LGBTQ+ Pride Month</Name>
+		<Year>2022</Year>
+		<Month>6</Month>
+		<Date>1</Date>
+		<WeekDay>Wednesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Flag Day</Name>
+		<Year>2022</Year>
+		<Month>6</Month>
+		<Date>14</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Father's Day</Name>
+		<Year>2022</Year>
+		<Month>6</Month>
+		<Date>19</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Juneteenth</Name>
+		<Year>2022</Year>
+		<Month>6</Month>
+		<Date>19</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Independence Day</Name>
+		<Year>2022</Year>
+		<Month>7</Month>
+		<Date>4</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Labor Day</Name>
+		<Year>2022</Year>
+		<Month>9</Month>
+		<Date>5</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>First Day of Hispanic Heritage Month</Name>
+		<Year>2022</Year>
+		<Month>9</Month>
+		<Date>15</Date>
+		<WeekDay>Thursday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Columbus Day</Name>
+		<Year>2022</Year>
+		<Month>10</Month>
+		<Date>10</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Indigenous Peoples' Day</Name>
+		<Year>2022</Year>
+		<Month>10</Month>
+		<Date>10</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Halloween</Name>
+		<Year>2022</Year>
+		<Month>10</Month>
+		<Date>31</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>First Day of American Indian Heritage Month</Name>
+		<Year>2022</Year>
+		<Month>11</Month>
+		<Date>1</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Daylight Savings Ends</Name>
+		<Year>2022</Year>
+		<Month>11</Month>
+		<Date>6</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Election Day</Name>
+		<Year>2022</Year>
+		<Month>11</Month>
+		<Date>8</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Veterans Day</Name>
+		<Year>2022</Year>
+		<Month>11</Month>
+		<Date>11</Date>
+		<WeekDay>Friday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Thanksgiving Day</Name>
+		<Year>2022</Year>
+		<Month>11</Month>
+		<Date>24</Date>
+		<WeekDay>Thursday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Native American Heritage Day</Name>
+		<Year>2022</Year>
+		<Month>11</Month>
+		<Date>25</Date>
+		<WeekDay>Friday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Christmas Eve</Name>
+		<Year>2022</Year>
+		<Month>12</Month>
+		<Date>24</Date>
+		<WeekDay>Saturday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Christmas Day</Name>
+		<Year>2022</Year>
+		<Month>12</Month>
+		<Date>25</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>New Year's Eve</Name>
+		<Year>2022</Year>
+		<Month>12</Month>
+		<Date>31</Date>
+		<WeekDay>Saturday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Holi</Name>
+		<Year>2022</Year>
+		<Month>3</Month>
+		<Date>18</Date>
+		<WeekDay>Friday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Diwali</Name>
+		<Year>2022</Year>
+		<Month>10</Month>
+		<Date>24</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Chinese New Year</Name>
+		<Year>2022</Year>
+		<Month>2</Month>
+		<Date>1</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Nirvana Day</Name>
+		<Year>2022</Year>
+		<Month>2</Month>
+		<Date>15</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Ash Wednesday</Name>
+		<Year>2022</Year>
+		<Month>3</Month>
+		<Date>2</Date>
+		<WeekDay>Wednesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>World Autism Awareness Day</Name>
+		<Year>2022</Year>
+		<Month>4</Month>
+		<Date>2</Date>
+		<WeekDay>Saturday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Ramadan</Name>
+		<Year>2022</Year>
+		<Month>4</Month>
+		<Date>2</Date>
+		<WeekDay>Saturday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Passover</Name>
+		<Year>2022</Year>
+		<Month>4</Month>
+		<Date>15</Date>
+		<WeekDay>Friday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Earth Day</Name>
+		<Year>2022</Year>
+		<Month>4</Month>
+		<Date>22</Date>
+		<WeekDay>Friday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Birthday of the Buddha</Name>
+		<Year>2022</Year>
+		<Month>5</Month>
+		<Date>8</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Al-Hijri</Name>
+		<Year>2022</Year>
+		<Month>8</Month>
+		<Date>30</Date>
+		<WeekDay>Tuesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Women's Equality Day</Name>
+		<Year>2022</Year>
+		<Month>8</Month>
+		<Date>26</Date>
+		<WeekDay>Friday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Autumnal Equinox</Name>
+		<Year>2022</Year>
+		<Month>9</Month>
+		<Date>22</Date>
+		<WeekDay>Thursday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>World Mental Health Day</Name>
+		<Year>2022</Year>
+		<Month>10</Month>
+		<Date>10</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>World AIDS Day</Name>
+		<Year>2022</Year>
+		<Month>12</Month>
+		<Date>1</Date>
+		<WeekDay>Thursday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Hanukkah Begins</Name>
+		<Year>2022</Year>
+		<Month>12</Month>
+		<Date>18</Date>
+		<WeekDay>Sunday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Winter Solstice</Name>
+		<Year>2022</Year>
+		<Month>12</Month>
+		<Date>21</Date>
+		<WeekDay>Wednesday</WeekDay>
+	</holiday>
+	<holiday>
+		<Name>Kwanzaa</Name>
+		<Year>2022</Year>
+		<Month>12</Month>
+		<Date>26</Date>
+		<WeekDay>Monday</WeekDay>
+	</holiday>
+</calender>
