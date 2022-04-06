@@ -9,11 +9,10 @@ import java.util.Iterator;
  */
 public class HolidayCalendarBackend implements IHolidayCalendarBackend {
 
-  private RedBlackTree<IHoliday> tree;
+  private RedBlackCalendar tree;
   
-
   public HolidayCalendarBackend() {
-    tree = new RedBlackTree<IHoliday>();
+    tree = new RedBlackCalendar();
     
   }
 
@@ -26,27 +25,10 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
   }
 
   @Override
-  public void boolRange(boolean range) {
-
-  }
-
-  @Override
-  public void setRange(String date1, String date2) {
-
-
-  }
-
-  @Override
-  public String getRange() {
-
-    return null;
-  }
-
-  @Override
   public List<IHoliday> searchBySingleDate(String date) {
     List<IHoliday> result = new ArrayList<>();
     Iterator<IHoliday> iteratorTree = tree.iterator();
-    String[] split = date.trim().split(",");
+    String[] split = date.trim().split("-");
     while (iteratorTree.hasNext()) {
       IHoliday iterator = iteratorTree.next();
       if (Integer.valueOf(split[0]) == (iterator.getYear())) {
@@ -63,7 +45,7 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
   public List<IHoliday> searchNextDate(String date) {
     List<IHoliday> result = new ArrayList<>();
     Iterator<IHoliday> iteratorTree = tree.iterator();
-    String[] split = date.trim().split(",");
+    String[] split = date.trim().split("-");
     while (iteratorTree.hasNext()) {
       IHoliday next = iteratorTree.next();
       if (Integer.valueOf(split[0]) == (next.getYear())) {
@@ -78,6 +60,14 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
     
     return result;
     
+  }
+
+  public List<IHoliday> getNextHoliday(String date){
+    return tree.getNextHolidays(date);
+  }
+
+  public List<IHoliday> holidayRange(String startDate, String endDate){
+    return tree.get(startDate, endDate);
   }
 
   @Override

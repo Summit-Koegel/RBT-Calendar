@@ -9,10 +9,10 @@ compileFrontend:
 	javac HolidayCalendarBackendPL.java
 	javac HolidayCalendarFront.java
 	javac HolidayPL.java
-runBackendTests: compileBackendTests 
-	java -jar junit5.jar -cp . --scan-classpath 
+runBackendTests: compileBackendTests
+	java -jar junit5.jar -cp . --scan-classpath -n BackendDeveloperTests
 
-compileBeckendTests: HolidayBackendTester.java
+compileBackendTests: HolidayBackendTester.java
 	javac -cp .:junit5.jar HolidayBackendTester.java
 
 runDataWranglerTests: DataWranglerTests.class

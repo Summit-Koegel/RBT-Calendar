@@ -76,6 +76,6 @@ public class HolidayCalendarFront implements IHolidayCalendarFront {
     String date1 = sc.nextLine();
     System.out.println("Please give end date: ");
     String date2 = sc.nextLine();
-    System.out.println(backend.searchByTwoDates(date1, date2));
+    System.out.println(backend.holidayRange(date1, date2));
   }
 }
