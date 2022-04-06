@@ -13,7 +13,7 @@ import java.util.Scanner;
  * project
  */
 public class HolidayCalendarFront implements IHolidayCalendarFront {
-  private IHolidayCalendarBackend backend = new HolidayCalendarBackendPL();
+  private IHolidayCalendarBackend backend = new HolidayCalendarBackend();
   private Scanner sc = new Scanner(System.in);
 
   public static void main(String[] args){
@@ -56,7 +56,7 @@ public class HolidayCalendarFront implements IHolidayCalendarFront {
     String name = sc.nextLine();
     System.out.println("Please give the date of holiday: ");
     String date = sc.nextLine();
-    backend.addHoliday(new HolidayPL(name, date));
+    backend.addHoliday(new Holiday(name, date));
   }
 
   @Override public void search() {
