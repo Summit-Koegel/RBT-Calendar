@@ -17,3 +17,4 @@ public interface IHolidayCalendarBackend {
     public List<IHoliday> searchBySingleDate(String date);
     public List<IHoliday> searchByTwoDates(String date1, String date2);
 }
+

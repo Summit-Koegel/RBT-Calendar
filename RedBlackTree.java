@@ -1,3 +1,11 @@
+// --== CS400 File Header Information ==--
+// Name: Charles Jungwirth
+// Email: crjungwirth@wisc.edu
+// Team: DQ
+// TA: Ilay Raz
+// Lecturer: Florian Heimerl
+// Notes to Grader: I messed up the adjust after insert,
+//and remove doesn't adjust RBT properties
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -14,7 +22,7 @@ import java.util.Stack;
  * traversal of the tree.
  */
 public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionInterface<T> {
-
+	//comment
     /**
      * This class represents a node holding a single value within a binary tree
      * the parent, left, and right child references are always maintained.
@@ -24,13 +32,21 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
         public Node<T> parent; // null for root node
         public Node<T> leftChild;
         public Node<T> rightChild;
-        public Node(T data) { this.data = data; }
+        public int blackHeight;//red0 black 1 dblblack 2
+        public Node(T data) { 
+        	this.data = data;
+        	blackHeight = 0;
+        }
         /**
          * @return true when this node has a parent and is the left child of
          * that parent, otherwise return false
          */
         public boolean isLeftChild() {
-            return parent != null && parent.leftChild == this;
+            return parent != null && this.equals(parent.leftChild);
+        }
+        public boolean isRightChild() {
+        	
+            return parent != null && this.equals(parent.rightChild);
         }
 
     }
@@ -62,6 +78,7 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
             if (returnValue) size++;
             else throw new IllegalArgumentException(
                     "This RedBlackTree already contains that value.");
+            root.blackHeight = 1;
             return returnValue;
         }
     }
@@ -75,7 +92,7 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
      *      newNode should be inserted as a descenedent beneath
      * @return true is the value was inserted in subtree, false if not
      */
-    private boolean insertHelper(Node<T> newNode, Node<T> subtree) {
+    protected boolean insertHelper(Node<T> newNode, Node<T> subtree) {
         int compare = newNode.data.compareTo(subtree.data);
         // do not allow duplicate values to be stored within this tree
         if(compare == 0) return false;
@@ -85,6 +102,8 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
             if(subtree.leftChild == null) { // left subtree empty, add here
                 subtree.leftChild = newNode;
                 newNode.parent = subtree;
+                newNode.blackHeight =0;
+                enforceRBTreePropertiesAfterInsert(newNode);
                 return true;
                 // otherwise continue recursive search for location to insert
             } else return insertHelper(newNode, subtree.leftChild);
@@ -95,12 +114,212 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
             if(subtree.rightChild == null) { // right subtree empty, add here
                 subtree.rightChild = newNode;
                 newNode.parent = subtree;
+                newNode.blackHeight =0;
+                enforceRBTreePropertiesAfterInsert(newNode);
                 return true;
                 // otherwise continue recursive search for location to insert
             } else return insertHelper(newNode, subtree.rightChild);
         }
     }
+    
+    /**
+     * removes a given node (not value)
+     * this is done because of how I use this method in 
+     * RBC, where I search for the node to remove first
+     * NODE MUST BE ON TREE or else stuff may break
+     * @param toRemove a specific node
+     */
+    protected  void removeNode(Node<T>toRemove) {
+    	//step 1 remove as if binary search tree
+    	
+    	size--;
+    	if(toRemove.rightChild==null&&toRemove.leftChild==null) {
+    		try {
+    			Node<T> loopnd = toRemove;
+    			
+    			
+    		}catch(Exception e){
+    			
+    		}
+    		//two null leafs below
+    		if(toRemove.parent == null) {
+    			//Tree is gone
+    			root = null;
+    		}else if(toRemove.isLeftChild()){
+    			
+    			toRemove.parent.leftChild = null;
+    			if(toRemove.blackHeight != 0) {
+    				balanceDblB(toRemove.parent, true);
+    			}//no prob for red
+    			return;
+    		}else {
+    			//System.out.println(toRemove.parent.rightChild.data+"148");
+    			toRemove.parent.rightChild = null;
+    			if(toRemove.blackHeight != 0) {
+    				balanceDblB(toRemove.parent, false);
+    			}//no prob for removing red
+    			return;
+    		}
+    	}
+    	else if(toRemove.rightChild!=null&&toRemove.leftChild==null) {
+    		//replace with right child
+    		//only right child
+    		if(toRemove.parent == null) {
+    			root = toRemove.rightChild;
+    		}else if(toRemove.isLeftChild()){
+    			toRemove.parent.leftChild = toRemove.rightChild;
+    			if(toRemove.rightChild != null)
+    				toRemove.rightChild.parent = toRemove.parent;
+    			if(rbh(toRemove) !=0) {
+    				//black
+    				balanceDblB(toRemove.parent,true);
+    				//balance double black put on right child
+    				//if replacement is red, this will recolor replacement
+    				//if black will balance
+    			}
+    			//if it is red, the replacement will be black causing no prob
+    			return;
+    		}else {//right child
+    			toRemove.parent.rightChild = toRemove.rightChild;
+    			if(toRemove.rightChild != null)
+    				toRemove.rightChild.parent = toRemove.parent;
+    			if(rbh(toRemove) !=0) {
+    				//black
+    				balanceDblB(toRemove.parent,false);
+    				//balance double black put on right child
+    				//if replacement is red, this will recolor replacement
+    				//if black will balance
+    			}
+    		}
+    	}
+    	else if(toRemove.rightChild==null&&toRemove.leftChild!=null) {
+    		//replace with left child
+    		//only left child
+    		if(toRemove.parent == null) {
+    			root = toRemove.leftChild;
+    		}else if(toRemove.isLeftChild()){
+    			toRemove.parent.leftChild = toRemove.leftChild;
+    			toRemove.leftChild.parent = toRemove.parent;
+    			if(rbh(toRemove) !=0) {
+    				//black
+    				balanceDblB(toRemove.parent,true);
+    				//balance double black put on right child
+    				//if replacement is red, this will recolor replacement
+    				//if black will balance
+    			}
+    		}else {
+    			toRemove.parent.rightChild = toRemove.leftChild;
+    			toRemove.leftChild.parent = toRemove.parent;
+    			if(rbh(toRemove) !=0) {
+    				//black
+    				balanceDblB(toRemove.parent,true);
+    				//balance double black put on right child
+    				//if replacement is red, this will recolor replacement
+    				//if black will balance
+    			}
+    		}
+    	}else {
+    		//the fun case: two kids 
+    		//replace with next node (left most of right subtree
+    		Node<T> rep = toRemove.rightChild;
+    		while(rep.leftChild != null) {
+    			rep = rep.leftChild;
+    		}
+    		if(rep.equals(toRemove.rightChild)) {//replace with immediate right child
+    			toRemove.data = rep.data;
+    			toRemove.rightChild = rep.rightChild;
+    			if(rep.rightChild != null) {
+    				rep.rightChild.parent = toRemove;
+    			}
+    			//TODO: add balancing
+    		}else {
+    			toRemove.data = rep.data;
+    			
+    			rep.parent.leftChild = rep.rightChild;
+    			if(rep.rightChild != null) {
+    				rep.rightChild.parent = rep.parent;
+    			}
+    			
+    			
+    		}
+    		
+    		
+    		
+    		
+    		
+    		/*
+    		Node<T> repl = toRemove.rightChild;
+    		while(repl.leftChild!= null) {
+    			repl = repl.leftChild;
+    			
+    		}
+    		
+    		if(repl.parent ==toRemove) {//the first right node was used to replace
+    			//repl has no left children
+    			toRemove.data = repl.data;
+    			
+    				
+    			
+	    		toRemove.rightChild = repl.rightChild;
+	    		if(toRemove.rightChild != null)
+	    			toRemove.rightChild.parent = toRemove;
+    			
+    			balanceDblB(toRemove,false);
+    		}else {//a left node was used to replace
+    			toRemove.data = repl.data; // replace subtree root
+    			repl.parent.leftChild=repl.rightChild;
+    			if(repl.rightChild != null)
+    				repl.rightChild.parent = repl.parent;
+    			//now repl.parent's left child is double black
+    			balanceDblB(repl.parent,true);
+    			}
+    			*/
 
+    		
+    		
+    		
+    		
+    	}
+    	
+    }
+    
+    /**
+     * helper method, makes making null nodes black easier
+     * @param node
+     * @return
+     */
+    private int rbh(Node<T> node) {
+    	if(node == null) {
+    		return 1;
+    	}
+    	return node.blackHeight;
+    }
+    /**
+     * balances when removing creates a DblB
+     * 
+     * @param parent
+     * @param leftChild whether the node's left cild is the double
+     */
+    protected void balanceDblB(Node<T> parent, boolean leftChild) {
+    	if(true) {
+    		return;
+    	}
+    	if(parent == null) {
+    		//root is double black
+    		root.blackHeight =1;
+    		return;
+    	}
+    	
+    	if(leftChild) {
+    		if(rbh(parent.leftChild)==0) {
+    			parent.leftChild.blackHeight =1;
+    			return;//double black +red =black
+    		}
+    	}
+    	
+    }
+    
+    
     /**
      * Performs the rotation operation on the provided nodes within this tree.
      * When the provided child is a leftChild of the provided parent, this
@@ -116,49 +335,52 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
      *      node references are not initially (pre-rotation) related that way
      */
     private void rotate(Node<T> child, Node<T> parent) throws IllegalArgumentException {
-        if(child == null || parent == null){
-            throw new IllegalArgumentException();
-        }
-
-        // right rotation
-        if(parent.leftChild == child){
-            child = parent.leftChild;
-            parent.leftChild = child.rightChild;
-            if(child.rightChild != null)
-                child.rightChild.parent = parent;
-            child.parent = parent.parent;
-            if(parent.parent == null)
-                root = child;
-            else if(parent == parent.parent.rightChild)
-                parent.parent.rightChild = child;
-            else{
-                parent.parent.leftChild = child;
-            }
-            child.rightChild = parent;
-            parent.parent = child;
-        } 
-
-        //left rotation
-        else if(parent.rightChild == child){
-            child = parent.rightChild;
-            parent.rightChild = child.leftChild;
-            if(child.leftChild != null)
-                child.leftChild.parent = parent;
-            child.parent = parent.parent;
-            if(parent.parent == null)
-                root = child;
-            else if(parent == parent.parent.leftChild)
-                parent.parent.leftChild = child;
-            else{
-                parent.parent.rightChild = child;
-            }
-            child.leftChild = parent;
-            parent.parent = child;
-        }
-        
-        else{
-            throw new IllegalArgumentException();
-        }
+    	
+    	if(child == null||parent==null) {
+    		throw new IllegalArgumentException("null element");
+    	}
+    	if(child.parent== null) {
+    		throw new IllegalArgumentException("child is orphan");
+    	}
+    	if(child.isLeftChild()) {
+    		child.parent = parent.parent;
+    		try {
+	    		if(parent.equals(child.parent.leftChild)) {
+	    			child.parent.leftChild = child;
+	    		}else {
+	    			child.parent.rightChild = child;
+	    		}
+    		}catch(NullPointerException e) {
+    			//grandparent is null
+    		}
+    		parent.parent = child;
+    		parent.leftChild = child.rightChild;
+    		child.rightChild = parent;
+    		if(child.parent ==null) {
+    			root = child;
+    		}
+    		
+    		
+    	}else {
+    		child.parent = parent.parent;
+    		
+    		try {
+	    		if(parent.equals(child.parent.leftChild)) {
+	    			child.parent.leftChild = child;
+	    		}else {
+	    			child.parent.rightChild = child;
+	    		}
+    		}catch(NullPointerException e) {
+    			//grandparent is null
+    		}
+    		parent.parent = child;
+    		parent.rightChild = child.leftChild;
+    		child.leftChild = parent;
+    		if(child.parent == null) {
+    			root = child;
+    		}
+    		
+    	} 
     }
 
     /**
@@ -339,95 +561,148 @@ public class RedBlackTree<T extends Comparable<T>> implements SortedCollectionIn
         return "level order: " + this.toLevelOrderString() +
                 "/nin order: " + this.toInOrderString();
     }
-
-    
-    // Implement at least 3 boolean test methods by using the method signatures below,
-    // removing the comments around them and addind your testing code to them. You can
-    // use your notes from lecture for ideas on concrete examples of rotation to test for.
-    // Make sure to include rotations within and at the root of a tree in your test cases.
-    // If you are adding additional tests, then name the method similar to the ones given below.
-    // Eg: public static boolean test4() {}
-    // Do not change the method name or return type of the existing tests.
-    // You can run your tests by commenting in the calls to the test methods 
-
-    
-    public static boolean test1() {
-
-            // set up RBT
-            RedBlackTree<Integer> tree = new RedBlackTree<Integer>();
-    
-            tree.insert(2);
-            tree.insert(3);
-            tree.insert(1);
-    
-            // rotations
-            tree.rotate(tree.root.leftChild, tree.root);
-    
-            // test for expected string
-            if (!tree.toLevelOrderString().equals("[ 1, 2, 3 ]")) {
-                System.out.println(tree.toLevelOrderString());
-                return false;
-            }
-            return true;
-        
+    protected void enforceIns(Node<T> nd) {
+    	if(nd.parent == null) {
+    		nd.blackHeight =1;
+    		return;
+    	}
+    	if(nd.parent.parent == null) {
+    		//parent is root, always fine
+    		nd.parent.blackHeight =1;
+    		return;
+    	}
+    	if(nd.parent.blackHeight !=0) {//black parent
+    		return;//adding a red node w/ black dad is fine
+    	}
+    	//now parent is red
+    	if(nd.isLeftChild()) {
+    		
+    		if(nd.parent.isRightChild()) {//rotate and try again
+    			rotate(nd,nd.parent);
+    			enforceIns(nd.rightChild);
+    			return;
+    		}
+    		if(rbh(nd.parent.rightChild)!=0) {//black aunt
+    			rotate(nd.parent,nd.parent.parent);
+    			//rotate + color swap
+    			nd.parent.blackHeight = 1;
+    			nd.parent.rightChild.blackHeight = 0;//old grandp
+    			return;
+    		}
+    		//red aunt
+    		nd.parent.blackHeight =1;
+    		
+    		//make aunt black
+    		nd.parent.parent.rightChild.blackHeight =1;
+    		nd.parent.parent.blackHeight = 0;
+    		//gpa red
+    		enforceIns(nd.parent.parent);
+    		
+    		
+    		
+    		
+    	}else {//RIGHT CHILD! don't pull a fast one
+    		if(nd.parent.isLeftChild()) {//rotate and try again
+    			rotate(nd,nd.parent);
+    			enforceIns(nd.leftChild);
+    			return;
+    		}
+    		if(rbh(nd.parent.leftChild)!=0) {//black aunt
+    			rotate(nd.parent,nd.parent.parent);
+    			//rotate + color swap
+    			nd.parent.blackHeight = 1;
+    			nd.parent.leftChild.blackHeight = 0;//old grandp
+    			return;
+    		}
+    		//red aunt
+    		nd.parent.blackHeight =1;
+    		
+    		//make aunt black
+    		nd.parent.parent.leftChild.blackHeight =1;
+    		nd.parent.parent.blackHeight = 0;
+    		//gpa red
+    		enforceIns(nd.parent.parent);
+    	}
     }
-    
-
-    
-    public static boolean test2() {
-        // set up RBT
-        RedBlackTree<Integer> tree = new RedBlackTree<Integer>();
-    
-        tree.insert(2);
-        tree.insert(3);
-        tree.insert(1);
-
-        // rotations
-        tree.rotate(tree.root.leftChild, tree.root);
-
-        // test for expected string
-        if (!tree.toInOrderString().equals("[ 1, 2, 3 ]")) {
-            System.out.println(tree.toLevelOrderString());
-            return false;
-        }
-        return true;
-    }
-    
-
-    
-    public static boolean test3() {
-        
-        // set up RBT
-        RedBlackTree<Integer> tree = new RedBlackTree<Integer>();
-
-        // rotations
-        try{
-            tree.insert(2);
-            tree.insert(3);
-            tree.insert(1);
-
-            tree.rotate(null, tree.root);
-        }
-
-        // test for expected string
-        catch(IllegalArgumentException e){
-            return true;
-        }
-
-        return false;
-    }
-    
-
-    
     /**
-     * Main method to run tests. Comment out the lines for each test
-     * to run them.
-     * @param args
+     * checks for problems w/ RB tree prop. + fixes
+     * @param nd node added/problem node MUST BE RED
      */
-    public static void main(String[] args) {
-        System.out.println("Test 1 passed: " + test1());
-        System.out.println("Test 2 passed: " + test2());
-        System.out.println("Test 3 passed: " + test3());
+    protected void enforceRBTreePropertiesAfterInsert(Node<T> nd) {
+    	enforceIns(nd);
+    	
     }
+
+
+    
+    
+    
+//
+//    /**
+//	 * If adding with a black aunt (null in this example) works well
+//	 */
+//	@Test
+//	public void testBlackAunt() {
+//		try {
+//			RedBlackTree<Integer> test = new RedBlackTree<Integer>();
+//			test.insert(100);
+//			test.insert(50);
+//			
+//			//left child 50 right null
+//			test.insert(25);
+//			//left insert with red uncle
+//			System.out.println();
+//			assertEquals(test.toLevelOrderString(),"[ 50, 25, 100 ]");
+//		}catch(Exception e){
+//			fail("unexpected exception");
+//		}
+//	}
+//	
+//	/**
+//	 * tests when adding a red element with a red parent and red aunt
+//	 * tests color swaps, and that they are in right position
+//	 */
+//	@Test
+//	public void testRedAuntColors(){
+//		try {
+//			RedBlackTree<Integer> test = new RedBlackTree<Integer>();
+//			test.insert(100);
+//			test.insert(50);
+//			
+//			//left child 50 right 75 red
+//			test.insert(150);
+//			if(test.root.blackHeight==0)fail("red root");
+//			if(test.root.rightChild.blackHeight!=0)fail("wrong color on insert");
+//			test.insert(75);
+//			if(test.root.blackHeight==0)fail("red root");
+//			if(test.root.leftChild.blackHeight==0)fail("bad recolor");
+//			if(test.root.leftChild.rightChild.blackHeight!=0)fail("bad recolor");
+//			//left insert with red uncle
+//			//check colors of all nodes
+//			assertEquals(test.toLevelOrderString(),"[ 100, 50, 150, 75 ]");
+//			
+//		}catch(Exception e){
+//			fail("unexpected exception");
+//		}
+//	}
+//	
+//	/**
+//	 * Tests red black tree toLevelOrder with many elements
+//	 * I calculated these by hand
+//	 */
+//	@Test
+//	public void testBigKahuna() {
+//		//adding a bunch of elements
+//		RedBlackTree<Integer> test = new RedBlackTree<Integer>();
+//		int[] elements = new int[] {5,26,84,62,20,79,100,16,86,27,41,75,83};
+//		for(int i =0; i< elements.length; i++) {
+//			test.insert(elements[i]);
+//		}
+//		assertEquals(test.toLevelOrderString(),"[ 41, 26, 79, 16, 27, 62, 86, 5, 20, 75, 84, 100, 83 ]");
+//		
+//	}
+ 
+    
+//    
 
 }
