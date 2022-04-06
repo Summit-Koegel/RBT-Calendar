@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -115,6 +114,55 @@ public class DataWranglerTests {
             e.printStackTrace();
             assert(false);  // invalid exception
         }
+    }
+
+    // Additional Data Wrangler tests in conjunction with other code
+
+    /**
+     * Tests the
+     */
+
+    // Code to review: Backend Developer
+ 
+    /**
+     * Tests the searchBySingleDate method of HolidayCalendarBackend
+     */
+    @Test
+    public void testSingleDate() {
+	HolidayCalenderBackend backend = new HolidayCalenderBackend();
+	try {
+		// test date with no holiday
+		 assert(backend.searchBySingleDate("2022-7-28").equals(new List<IHoliday>()));
+		 // test date with one holiday
+		 assert(backend.searchBySingleDate("2022-12-25").size() == 1 &&
+				 backend.searchBySingleDate("2022-12-25").get(0).equals(new Holiday("Christmas Day", "Sunday", 2022, 12, 25)));
+		 // test date with multiple holidays
+		 assert(backend.searchBySingleDate("2022-10-10").size() == 2 && backend.searchBySingleDate("2022-10-10").contains(new Holiday("Columbus Day", "Monday", 2022, 10, 10)));
+	} catch (Exception e) {
+	    // invalid exception
+	    assert(false);
+	}
+    }
+
+    /**
+     * Tests the searchNextDate method of CalendarBackend
+     */
+    @Test
+    public void testNextDate() {
+	    HolidayCalenderBackend backend = new HolidayCalendarBackend();
+	    try {
+		    // check individual date
+		    assert(backend.searchNextDate("2022-10-29").size() == 1 && backend.searchNextDate().get(0).equals(new Holiday("Halloween", "Monday", 2022, 10, 31)));
+		    // check all possible dates return something
+		    for(int month = 1; month <= 12; month++) {
+			    for(int day = 1; day <= 31) {
+				    String date = "2022"+"-"+month+"-"+day;
+				    assert(backend.searchNextDate(date).size() != 0);
+			    }
+		    }
+	    } catch (Exception e) {
+		    assert(false); // invalid exception
+	    }
     }
 
 }
