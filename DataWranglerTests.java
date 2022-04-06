@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DataWranglerTests {
 
@@ -129,10 +130,10 @@ public class DataWranglerTests {
      */
     @Test
     public void testSingleDate() {
-	HolidayCalenderBackend backend = new HolidayCalenderBackend();
+	HolidayCalendarBackend backend = new HolidayCalendarBackend();
 	try {
 		// test date with no holiday
-		 assert(backend.searchBySingleDate("2022-7-28").equals(new List<IHoliday>()));
+		 assert(backend.searchBySingleDate("2022-7-28").size() == 0);
 		 // test date with one holiday
 		 assert(backend.searchBySingleDate("2022-12-25").size() == 1 &&
 				 backend.searchBySingleDate("2022-12-25").get(0).equals(new Holiday("Christmas Day", "Sunday", 2022, 12, 25)));
@@ -149,13 +150,13 @@ public class DataWranglerTests {
      */
     @Test
     public void testNextDate() {
-	    HolidayCalenderBackend backend = new HolidayCalendarBackend();
+	    HolidayCalendarBackend backend = new HolidayCalendarBackend();
 	    try {
 		    // check individual date
-		    assert(backend.searchNextDate("2022-10-29").size() == 1 && backend.searchNextDate().get(0).equals(new Holiday("Halloween", "Monday", 2022, 10, 31)));
+		    assert(backend.searchNextDate("2022-10-29").size() == 1 && backend.searchNextDate("2022-10-29").get(0).equals(new Holiday("Halloween", "Monday", 2022, 10, 31)));
 		    // check all possible dates return something
 		    for(int month = 1; month <= 12; month++) {
-			    for(int day = 1; day <= 31) {
+			    for(int day = 1; day <= 31; day++) {
 				    String date = "2022"+"-"+month+"-"+day;
 				    assert(backend.searchNextDate(date).size() != 0);
 			    }

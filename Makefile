@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 runTests: runFrontendTests runDataWranglerTests runBackendTests
 
 clean: 
