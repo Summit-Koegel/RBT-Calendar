@@ -13,7 +13,7 @@ import java.util.Scanner;
  * project
  */
 public class HolidayCalendarFront implements IHolidayCalendarFront {
-  private IHolidayCalendarBackend backend = new HolidayCalendarBackend();
+  private HolidayCalendarBackend backend = new HolidayCalendarBackend();
   private Scanner sc = new Scanner(System.in);
 
   public static void main(String[] args){
@@ -56,7 +56,10 @@ public class HolidayCalendarFront implements IHolidayCalendarFront {
     String name = sc.nextLine();
     System.out.println("Please give the date of holiday: ");
     String date = sc.nextLine();
-    backend.addHoliday(new Holiday(name, date));
+    System.out.println("Please enter weekday of Holiday");
+    String wday = sc.nextLine();
+
+    backend.addHoliday(new Holiday(name, wday, Integer.parseInt(date.substring(0, 4)), Integer.parseInt(date.substring(5, 7)), Integer.parseInt(date.substring(8, 10))));
   }
 
   @Override public void search() {
@@ -67,8 +70,7 @@ public class HolidayCalendarFront implements IHolidayCalendarFront {
   @Override public void next() {
     System.out.println("--Selected: Show next holiday--\nPlease give current date (YYYY/MM/DD)");
     String date = sc.nextLine();
-    List<IHoliday> temp = backend.searchByTwoDates(date, date.substring(0, 4) + "/12/31");
-    System.out.println(temp.get(0));
+    System.out.println(backend.getNextHoliday(date));
   }
 
   @Override public void range() {

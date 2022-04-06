@@ -75,4 +75,18 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
     return null;
   }
 
+  @Override
+  public String getRange(){
+	// Do nothing
+  }
+
+  @Override 
+  public void setRange(String date1, String date2){
+	// Do nothing 
+  }
+
+  @Override 
+  public void boolRange(boolean a){
+	// Do nothing	 
+  } 
 }
