@@ -23,6 +23,13 @@ public class HolidayCalendarFront implements IHolidayCalendarFront {
   @Override public void exec() {
     boolean loop = true;
     String input;
+    IHolidayLoader xml = new HolidayLoader();
+    try{
+	List<IHoliday> holidays = xml.loadHolidays("./Holidays.xml");
+    for (IHoliday hol: holidays) backend.addHoliday(hol);
+    } catch (Exception e){
+	    System.out.println("Incorrect file path");
+    }
     System.out.println("LOADING HOLIDAY PLANNER.\nPLEASE SELECT AN OPTION");
     do {
       System.out.println("[S] - Search for holiday in planner\n[N] - Show next holiday based on "
