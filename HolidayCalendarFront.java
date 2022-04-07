@@ -63,18 +63,18 @@ public class HolidayCalendarFront implements IHolidayCalendarFront {
   }
 
   @Override public void search() {
-    System.out.println("--Selected: Search for holiday --\nPlease give date (YYYY/MM/DD)");
+    System.out.println("--Selected: Search for holiday --\nPlease give date (YYYY-MM-DD)");
     System.out.println(backend.searchBySingleDate(sc.nextLine()));
   }
 
   @Override public void next() {
-    System.out.println("--Selected: Show next holiday--\nPlease give current date (YYYY/MM/DD)");
+    System.out.println("--Selected: Show next holiday--\nPlease give current date (YYYY-MM-DD)");
     String date = sc.nextLine();
     System.out.println(backend.getNextHoliday(date));
   }
 
   @Override public void range() {
-    System.out.println("--Selected: Show range of holidays--\nPlease give start date: ");
+    System.out.println("--Selected: Show range of holidays--\nPlease give start date (YYYY-MM-DD): ");
     String date1 = sc.nextLine();
     System.out.println("Please give end date: ");
     String date2 = sc.nextLine();
