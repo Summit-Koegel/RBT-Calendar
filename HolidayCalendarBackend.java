@@ -72,7 +72,7 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
 
   @Override
   public List<IHoliday> searchByTwoDates(String date1, String date2) {
-    return null;
+    return tree.get(date1, date2);
   }
 
   @Override

@@ -111,6 +111,36 @@ public class RedBlackCalendar extends RedBlackTree<ComparableList<IHoliday>> imp
 		return ymdText(holiday.getYear(),holiday.getMonth(),holiday.getDay());
 	}
 	
+	
+	/**
+	 * iterator to go through i holidays
+	 * @return iterator with IHolidays
+	 */
+	public Iterator<IHoliday> IteratorHol(){
+		return new Iterator<IHoliday>(){
+			private Iterator<ComparableList<IHoliday>> listIt = iterator();
+			private int index =-1;
+			private ComparableList<IHoliday> current;
+			public IHoliday next() {
+				if(index == -1||index>=current.size()) {
+					current = listIt.next();
+					index = 0;
+				}
+				IHoliday outP = current.get(index);
+				index++;
+				return outP;
+				
+			}
+			public boolean hasNext() {
+				try {
+					return(listIt.hasNext()||index<current.size());
+				}catch(Exception e){
+					return false;
+				}
+			}
+			
+		};
+	}
 	/**
 	 * 
 	 * @param year
