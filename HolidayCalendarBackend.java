@@ -27,7 +27,7 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
   @Override
   public List<IHoliday> searchBySingleDate(String date) {
     List<IHoliday> result = new ArrayList<>();
-    Iterator<IHoliday> iteratorTree = tree.iterator();
+    Iterator<IHoliday> iteratorTree = tree.IteratorHol();
     String[] split = date.trim().split("-");
     while (iteratorTree.hasNext()) {
       IHoliday iterator = iteratorTree.next();
@@ -44,7 +44,7 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
   
   public List<IHoliday> searchNextDate(String date) {
     List<IHoliday> result = new ArrayList<>();
-    Iterator<IHoliday> iteratorTree = tree.iterator();
+    Iterator<IHoliday> iteratorTree = tree.IteratorHol();
     String[] split = date.trim().split("-");
     while (iteratorTree.hasNext()) {
       IHoliday next = iteratorTree.next();
