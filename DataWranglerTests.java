@@ -147,10 +147,10 @@ public class DataWranglerTests {
 	    HolidayCalendarBackend back = new HolidayCalendarBackend();
 	    try {
 		    Holiday test = null;
-		    back.insert(test); // shouldn't throw error
+		    back.addHoliday(test); // shouldn't throw error
 		    assert(true);
 		    test = new Holiday("Fake", "Fake", -203, 45, 1908);
-		    back.insert(test); // shouldn't throw error
+		    back.addHoliday(test); // shouldn't throw error
 		    assert(true); 
 	    } catch (Exception e) {
 		    assert(false);
