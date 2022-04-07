@@ -127,7 +127,7 @@ public class DataWranglerTests {
     public void testAddHoliday() {
 	    HolidayCalendarBackend backend = new HolidayCalendarBackend();
 	    try {
-		    ArrayList<IHoliday> holidays = _instance.loadHolidays("Holidays.xml");
+		    ArrayList<IHoliday> holidays = (ArrayList<IHoliday>) _instance.loadHolidays("Holidays.xml");
 		    for(IHoliday holiday : holidays) {
 			    backend.addHoliday(holiday);
 			    assert(true); // correctly inserted
