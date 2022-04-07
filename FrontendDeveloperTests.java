@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FrontendDeveloperTests {
 	private IHolidayCalendarFront tester = new HolidayCalendarFront();
+	private IHoliday holiday = new Holiday("Special", "Tuesday", 2022, 1, 1);
 
 	@BeforeEach
 	public void init(){
@@ -29,7 +30,6 @@ public class FrontendDeveloperTests {
 	 */
 	@Test
 	public void testHolidayConstructor(){
-		IHoliday holiday = new Holiday("Special", "Tuesday", 2022, 1, 1);
 		assertEquals(holiday.getYear(), 2022);
 		assertEquals(holiday.getMonth(), 1);
 		assertEquals(holiday.getName(), "Special");
@@ -41,7 +41,8 @@ public class FrontendDeveloperTests {
 	 */
 	@Test
 	public void testHolidayCompare(){
-		
+		IHoliday test = new Holiday("Test", "Monday", 2021, 1, 1);
+		assertEquals(holiday.compareTo(test), 1);	
 	}
 
 
