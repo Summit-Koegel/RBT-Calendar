@@ -120,8 +120,42 @@ public class DataWranglerTests {
     // Additional Data Wrangler tests in conjunction with other code
 
     /**
-     * Tests the
+     * Tests the backend's addHoliday method to make sure it uses loaded Holidays
      */
+
+    @Test
+    public void testAddHoliday() {
+	    HolidayCalendarBackend backend = new HolidayCalendarBackend();
+	    try {
+		    ArrayList<IHoliday> holidays = _instance.loadHolidays("Holidays.xml");
+		    for(IHoliday holiday : holidays) {
+			    backend.addHoliday(holiday);
+			    assert(true); // correctly inserted
+		    }
+
+	    } catch (Exception e) {
+		    // invalid exception
+		    assert(false);
+	    }
+    }
+
+    /**
+     * Tests the backend's and RedBlackCalendar's response to an invalid Holiday
+     */
+    @Test
+    public void testInvalidHoliday() {
+	    HolidayCalendarBackend back = new HolidayCalendarBackend();
+	    try {
+		    Holiday test = null;
+		    back.insert(test); // shouldn't throw error
+		    assert(true);
+		    test = new Holiday("Fake", "Fake", -203, 45, 1908);
+		    back.insert(test); // shouldn't throw error
+		    assert(true); 
+	    } catch (Exception e) {
+		    assert(false)
+	    }
+    }
 
     // Code to review: Backend Developer
  
