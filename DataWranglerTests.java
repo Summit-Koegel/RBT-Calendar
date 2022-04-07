@@ -153,7 +153,7 @@ public class DataWranglerTests {
 		    back.insert(test); // shouldn't throw error
 		    assert(true); 
 	    } catch (Exception e) {
-		    assert(false)
+		    assert(false);
 	    }
     }
 
