@@ -77,7 +77,7 @@ public class HolidayCalendarBackend implements IHolidayCalendarBackend {
 
   @Override
   public String getRange(){
-	// Do nothing
+	return null;
   }
 
   @Override 
