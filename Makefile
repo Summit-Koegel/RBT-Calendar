@@ -1,3 +1,6 @@
+run: compileFrontend
+	java HolidayCalendarFront
+
 runTests: runFrontendTests runDataWranglerTests runBackendTests runAlgorithmEngineerTests
 
 clean: 
