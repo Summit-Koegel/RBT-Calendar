@@ -15,7 +15,7 @@ runBackendTests: compileBackendTests
 
 compileBackendTests: HolidayBackendTester.java
 	javac -cp .:junit5.jar HolidayBackendTester.java
-
+	javac -cp .:junit5.jar FrontendDeveloperTests.java -Xlint
 runDataWranglerTests: DataWranglerTests.class
 	java -jar junit5.jar --class-path . --scan-classpath
 

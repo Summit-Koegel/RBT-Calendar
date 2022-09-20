@@ -1,7 +1,22 @@
+// --== CS400 Project Two File Header ==--
+// Name: Summit Koegel
+// CSL Username: summit
+// Email: skoegel@wisc.edu
+// Lecture #: 004
+// Notes to Grader:
+
 //import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -95,5 +110,90 @@ public class HolidayBackendTester {
       Assertions.assertEquals("Thanksgiving", result.get(0).getName());
 
     }
+
+    /*
+    @Test
+    public void testHolidayRange(){
+      HolidayCalendarBackend tree = new HolidayCalendarBackend();
+
+      //Name, dow, year, month, day
+      Holiday easter = new Holiday("Easter, Monday, 2002, 3, 8");
+      Holiday christmas = new Holiday("christmas, Saturday, 2002, 12, 25");
+      Holiday fourth = new Holiday("Fourth, Monday, 2002, 7, 4");
+      Holiday something = new Holiday("something, Monday, 2002, 8, 9");
+
+      tree.addHoliday(easter);
+      tree.addHoliday(christmas);
+      tree.addHoliday(fourth);
+      tree.addHoliday(something);
+
+      Assertions.assertEquals(0, tree.get("2002-01-01", "2002-02-01").size());
+
+      Assertions.assertEquals(2, tree.get("2002-06-01", "2002-09-01").size());
+
+    }
+
+    @Test
+    public void getNextHolidayTest(){
+      HolidayCalendarBackend tree = new HolidayCalendarBackend();
+
+      //Name, dow, year, month, day
+      IHoliday easter = new Holiday("Easter, Monday, 2002, 3, 8");
+      Holiday christmas = new Holiday("christmas, Saturday, 2002, 12, 25");
+      Holiday fourth = new Holiday("Fourth, Monday, 2002, 7, 4");
+      Holiday something = new Holiday("something, Monday, 2002, 8, 9");
+
+      tree.addHoliday(easter);
+      tree.addHoliday(christmas);
+      tree.addHoliday(fourth);
+      tree.addHoliday(something);
+
+      Assertions.assertEquals("[Fourth: 2002/07/04 (Monday)]", tree.getNextHoliday("2002-03-08"));
+
+    }
+
+    */
+
+    
+      //Name, dow, year, month, day
+      //IHoliday easter = new Holiday("Easter, Monday, 2002, 3, 8");
+/*
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+    }
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
+
+    @Test
+    public void testFE1(){
+      IHolidayCalendarFront run = HolidayCalendarFront();
+      run.exec();
+
+      Assertions.assertEquals(run.exec(), run.exec().contains("PLEASE SELECT AN OPTION"));
+
+
+    }
+
+    @Test
+    public void test2FE(){
+      IHolidayCalendarFront run = HolidayCalendarFront();
+      run.exec();
+
+      Assertions.assertEquals(run.exec(), run.exec().contains("[S] - Search for holiday in planner"));
+    }
+    */
+    
+    
 
 }
