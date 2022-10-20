@@ -1,12 +1,3 @@
-// --== CS400 File Header Information ==--
-// Name: Charles Jungwirth
-// Email: crjungwirth@wisc.edu
-// Team: DQ
-// TA: Ilay Raz
-// Lecturer: Florian Heimerl
-// Notes to Grader: I messed up the adjust after insert,
-//and remove doesn't adjust RBT properties
-//Red black calendar alone should work
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
