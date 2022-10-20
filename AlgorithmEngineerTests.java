@@ -1,13 +1,3 @@
-// --== CS400 File Header Information ==--
-// Name: Charles Jungwirth
-// Email: crjungwirth@wisc.edu
-// Team: DQ
-// TA: Ilay Raz
-// Lecturer: Florian Heimerl
-// Notes to Grader: I messed up the adjust after insert,
-//and remove doesn't adjust RBT properties
-//Red black calendar alone should work
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
