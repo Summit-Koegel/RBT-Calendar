@@ -1,11 +1,3 @@
-// --== CS400 Project [NUMBER] File Header ==--
-// Name: Aaryush Gupta
-// CSL Username: aaryush
-// Email: agupta276@wisc.edu
-// Lecture #: 004
-// Notes to Grader: <Notes>
-
-
 public class HolidayPL implements IHoliday{
   public String date;
   public String name;
