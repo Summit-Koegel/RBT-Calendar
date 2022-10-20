@@ -1,10 +1,3 @@
-// --== CS400 Project 02 File Header ==--
-// Name: Aaryush Gupta
-// CSL Username: aaryush
-// Email: agupta276@wisc.edu
-// Lecture #: 004
-// Notes to Grader: <Notes>
-
 import java.util.List;
 import java.util.Scanner;
 
