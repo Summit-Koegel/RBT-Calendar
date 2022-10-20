@@ -1,12 +1,3 @@
-// --== CS400 Project Two File Header ==--
-// Name: Summit Koegel
-// CSL Username: summit
-// Email: skoegel@wisc.edu
-// Lecture #: 004
-// Notes to Grader:
-
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
